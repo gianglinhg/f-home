@@ -53,6 +53,13 @@ Route::controller(CategoryController::class)->prefix('category')->group(function
     Route::post('edit/{id}', 'update')->name('category.update');
     Route::get('delete/{id}', 'delete')->name('category.delete');
 });
+Route::get('admin/orders/index', [OrdersController::class, 'index']);
+Route::get('admin/order/detail/{id}', [OrdersController::class, 'detail']);
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
