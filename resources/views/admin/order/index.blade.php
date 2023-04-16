@@ -73,9 +73,16 @@
                 </td>
             </tr>
             @endforeach
+            {{$list->links('admin.admin-paginate')}}
           </tbody>
         </table>
       </div>
     </div>
   </div>
 @endsection
+@push('js')
+    {{-- <<<<<<< HEAD --}}
+    <script src="{{url('assets')}}/cutstom-js/order.js">
+    </script>
+
+@endpush
