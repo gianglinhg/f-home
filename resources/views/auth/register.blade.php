@@ -8,48 +8,42 @@
             <div class="col-lg-12">
                 <div class="p-5">
                     <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        <h1 class="h4 text-gray-900 mb-4" T>Tạo mới tài khoản!</h1>
                     </div>
                     <form method="POST" action="{{ route('register') }}" class="user">
                         @csrf
                         <div class="form-group">
-                            <input type="text" name="name" class="form-control form-control-user" placeholder="Name">
+                            <input type="text" name="name" class="form-control form-control-user" placeholder="Tên">
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
                         </div>
                         <div class="form-group">
                             <input type="email" name="email" class="form-control form-control-user"
-                                placeholder="Email Address">
+                                placeholder="Địa chỉ email">
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
-
-                        </div>
-                        <div class="form-group">
-                            <input type="text" name="phone" class="form-control form-control-user"
-                                placeholder="Số điện thoại">
-                            <x-input-error :messages="$errors->get('phone')" class="mt-2" />
 
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
                                 <input type="password" name="password" class="form-control form-control-user"
-                                    placeholder="Password">
+                                    placeholder="Mật khẩu">
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
                             </div>
                             <div class="col-sm-6">
                                 <input type="password" name="password_confirmation"
-                                    class="form-control form-control-user" placeholder="Repeat Password">
+                                    class="form-control form-control-user" placeholder="Nhập lại mật khẩu">
                                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
 
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary btn-user btn-block">
-                            Register Account
+                            Tạo tài khoản
                         </button>
                     </form>
                     <hr>
                     <div class="text-center">
-                        <a class="small" href="{{route('login')}}">Already have an account? Login!</a>
+                        <a class="small" href="{{route('login')}}">Đã có tài khoản, đăng nhập!</a>
                     </div>
                 </div>
             </div>

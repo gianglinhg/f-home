@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('avatar')->default('default.png');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone',10);
             $table->string('role')->default('user');
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();

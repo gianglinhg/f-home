@@ -16,7 +16,7 @@ class Order_Details extends Seeder
     {
         $day = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28];
         $month = [2,3,4,5,6,7,8];
-        for($i = 0; $i < 1000; $i++){
+        for($i = 0; $i < 5; $i++){
             DB::table('order_details')->insert([
                 'order_id' => rand(1, 500),
                 'product_id' => rand(1,100),

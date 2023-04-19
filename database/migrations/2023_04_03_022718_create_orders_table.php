@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->unsigned();
             $table->string('address');
+            $table->string('phone',10);
             $table->string('code',10);
             $table->string('status',50)->default('Chờ xác nhận');
             $table->string('note')->nullable();;

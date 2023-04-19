@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
 
-                        <img class="logo1" src="{{asset('asset/images/logo1.jpg')}}" />
+                        <img class="logo1" src="{{asset('asset/images/logo.png')}}" />
                     </div>
 
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -40,24 +40,24 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="new">
-                        <h3>Newsletter</h3>
+                        <h3>Nhập mail nhận thông tin</h3>
                         <form class="newtetter">
-                            <input class="tetter" placeholder="Your email" type="text" name="Your email">
-                            <button class="submit">Subscribe</button>
+                            <input class="tetter" placeholder="Email của bạn.." type="text" name="email">
+                            <button class="submit">Đăng kí</button>
                         </form>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="newtt">
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a
-                            page when looking at its layout. The point<br> of using Lorem I</p>
+                        <p>Chúng tôi sẽ gửi cho bạn những mẫu nhà đẹp hàng tuần và các chương trình khuyến mại. Đăng ký
+                            ngay để nhận thông tin sớm nhất !</p>
                     </div>
                 </div>
             </div>
 
         </div>
         <div class="copyright">
-            <p>Copyright 2019 All Right Reserved By <a href="https://html.design/">Free html Templates</a></p>
+            <p>Copyright 2023 All Right Reserved </p>
         </div>
     </div>
 

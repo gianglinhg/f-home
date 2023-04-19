@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                 <div class="img_box">
-                    <figure><img src="{{asset('asset/images/products/' . $product->images[0]->path)}}" alt="#" />
+                    <figure><img src="{{asset('asset/images/products/' . $product->image)}}" alt="#" />
                     </figure>
                 </div>
             </div>
@@ -15,7 +15,10 @@
                         <h2>{{$product->name}}</h2>
                     </div>
                     <div class="product-detail-side">
-                        <span><del>$679.89</del></span><span class="new-price">{{$product->price}}</span>
+                        @if($product->discount)
+                        <span><del>{{number_format($product->discount, 0, ',','.')}}VNĐ</del></span>
+                        @endif
+                        <span class="new-price">{{number_format($product->price, 0, ',','.')}}</span>
                         <span class="rating">
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -23,7 +26,7 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                             <i class="fa fa-star-o" aria-hidden="true"></i>
                         </span>
-                        <span class="review">({{$product->comments->count()}} customer review)</span>
+                        <span class="review">({{$product->comments->count()}} đánh giá)</span>
                     </div>
                     <div class="detail-contant">
                         <p>
@@ -37,8 +40,8 @@
                                 <input step="1" min="1" max="5" name="quantity" value="1" class="input-text qty text"
                                     size="4" type="number">
                             </div>
-                            <button type="submit" class="bt_main bt_submit" data-id="{{$product->id}}">Add to
-                                cart</button>
+                            <button type="submit" class="bt_main bt_submit" data-id="{{$product->id}}">Thêm vào giỏ
+                                hàng</button>
                         </form>
                     </div>
                 </div>
@@ -50,8 +53,8 @@
                     <div class="tab_bar_section">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item"> <a class="nav-link active" data-toggle="tab"
-                                    href="#description">Description</a> </li>
-                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#reviews">Reviews
+                                    href="#description">Nội dung</a> </li>
+                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#reviews">Đánh giá
                                     ({{$product->comments->count()}})</a>
                             </li>
                         </ul>

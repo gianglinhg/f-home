@@ -48,8 +48,11 @@
 </x-guest-layout> --}}
 
 <x-guest-layout>
+    {{-- @section('guest_content') --}}
     <!-- Outer Row -->
-
+    {{-- <x-slot name="title">
+        {{$title}}
+    </x-slot> --}}
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <div class="card o-hidden border-0 shadow-lg my-5">
@@ -60,44 +63,42 @@
                 <div class="col-lg-12">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Chào mừng trở lại!</h1>
                         </div>
                         <form class="user" method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group">
                                 <input type="email" name="email" class="form-control form-control-user"
-                                    placeholder="Enter Email Address...">
+                                    placeholder="Địa chỉ email..">
                                 <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
                             </div>
                             <div class="form-group">
                                 <input type="password" name="password" class="form-control form-control-user"
-                                    placeholder="Password">
+                                    placeholder="Mật khẩu..">
                                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
                             </div>
                             <div class="form-group">
                                 <div class="custom-control custom-checkbox small">
                                     <input type="checkbox" class="custom-control-input" id="customCheck">
-                                    <label class="custom-control-label" for="customCheck">Remember
-                                        Me</label>
+                                    <label class="custom-control-label" for="customCheck">Ghi nhớ tôi</label>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                            <button type="submit" class="btn btn-primary btn-user btn-block">Đăng nhập</button>
                         </form>
                         <hr>
                         @if (Route::has('password.request'))
                         <div class="text-center">
-                            <a class="small" href="{{ route('password.request') }}">Forgot Password?</a>
+                            <a class="small" href="{{ route('password.request') }}">Quên mật khẩu?</a>
                         </div>
                         @endif
                         <div class="text-center">
-                            <a class="small" href="{{ route('register') }}>Create an Account!</a>
+                            <a class="small" href="{{ route('register') }}">Tạo tài khoản!</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
     </div>
+    {{-- @endsection --}}
 </x-guest-layout>

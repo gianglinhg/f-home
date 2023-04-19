@@ -60,7 +60,7 @@
               </div>
             </div>
           </div>
-          <a href="{{route('product',[$product->slug])}}">
+          <a href="{{route('product.detail',[$product->slug])}}">
             <div class="product_detail text_align_center">
               <p class="product_price">{{$product->price}}VNĐ
                 @if($product->disccout)
