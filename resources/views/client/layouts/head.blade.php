@@ -17,7 +17,7 @@
 <!-- Responsive-->
 <link rel="stylesheet" href="{{asset('asset/css/responsive.css')}}">
 <!-- fevicon -->
-<link rel="icon" href="{{asset('asset/images/favicon.png')}}" type="image/gif" />
+<link rel="icon" href="{{asset('asset/images/f-home-favicon-white.svg')}}" type="image/gif" />
 <!-- Scrollbar Custom CSS -->
 <link rel="stylesheet" href="{{asset('asset/css/jquery.mCustomScrollbar.min.css')}}">
 <!-- Tweaks for older IEs-->
@@ -40,13 +40,30 @@
 @stack('styles')
 
 <style>
-    /* .old_price::after {
-        content: "VNĐ";
+    .btn-submit {
+        background: #000;
+        width: 100%;
+        display: inline-block;
+        text-align: center;
+        padding: 10px 0px;
+        color: #fff;
     }
 
-    .product_price::after {
-        content: "VNĐ";
-    } */
+    .non-a {
+        background: none !important;
+        width: 100%;
+        display: inline-block;
+        text-align: left !important;
+        color: #666 !important;
+        margin-top: 0px !important;
+        text-decoration: underline !important;
+    }
+
+    .btn-submit:hover {
+        background: #4eddd2;
+        color: #000;
+        transition: all .3s linear;
+    }
 
     .new-price::after {
         content: "VNĐ";

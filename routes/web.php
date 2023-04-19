@@ -5,10 +5,14 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Client\CartController;
+use App\Http\Controllers\Client\ShopController;
+use App\Http\Controllers\Client\CheckoutController;
+
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrdersController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,21 +24,26 @@ use App\Http\Controllers\OrdersController;
 |
 */
 
-Route::get('/', [MainController::class,'home'])->name('home');
-Route::get('about', [MainController::class,'about'])->name('about');
-Route::get('contact', [MainController::class,'contact'])->name('contact');
-Route::get('shop', [MainController::class,'shop'])->name('shop');
-Route::get('shop/{slug}.html', [MainController::class,'product'])->name('product');
-Route::post('filter', [MainController::class,'filter'])->name('filter');
-Route::get('cart', [CartController::class,'cart'])->name('cart');
-Route::get('checkout', [CartController::class,'checkout'])->name('checkout');
-Route::post('store-cart', [CartController::class,'storeCart'])->name('store-cart');
-Route::post('update-cart', [CartController::class,'updateCart'])->name('update-cart');
-Route::post('delete-cart', [CartController::class,'deleteCart'])->name('delete-cart');
+Route::get('/', [MainController::class, 'home'])->name('home');
+Route::get('about', [MainController::class, 'about'])->name('about');
+Route::get('contact', [MainController::class, 'contact'])->name('contact');
+Route::post('store-contact', [MainController::class, 'storContact'])->name('store-contact');
+Route::get('shop', [ShopController::class, 'shop'])->name('shop');
+Route::get('shop/{slug}.html', [ShopController::class, 'product'])->name('product.detail');
+Route::post('filter', [ShopController::class, 'filter'])->name('filter');
+Route::get('checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+Route::post('store-order', [CheckoutController::class, 'storeOrder'])->name('store.order');
+Route::post('vnpay', [CheckoutController::class, 'vnpay'])->name('vnpay');
+Route::get('store-vnpay', [CheckoutController::class, 'storeVnpay'])->name('store.vnpay');
+//cart
+Route::get('cart', [CartController::class, 'cart'])->name('cart');
+Route::post('store-cart', [CartController::class, 'storeCart'])->name('store-cart');
+Route::post('update-cart', [CartController::class, 'updateCart'])->name('update-cart');
+Route::post('delete-cart', [CartController::class, 'deleteCart'])->name('delete-cart');
 
 
 //Admin
-Route::get('admin',[AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('admin', [AdminController::class, 'dashboard'])->name('dashboard');
 
 Route::controller(ProductController::class)->prefix('product')->group(function () {
     Route::get('', 'index')->name('product');
@@ -68,4 +77,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

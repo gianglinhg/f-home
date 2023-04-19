@@ -6,8 +6,8 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mapimg">
                     <div class="text-bg">
-                        <h1>The latest <br> <strong class="black_bold">furniture Design</strong><br></h1>
-                        <a href="#">Shop Now <i class='fa fa-angle-right'></i></a>
+                        <h1>Thiết kế <br> <strong class="black_bold">mới nhất</strong><br></h1>
+                        <a href="{{route('shop')}}">Mua ngay <i class='fa fa-angle-right'></i></a>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
@@ -26,7 +26,7 @@
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
+            {{-- <li data-target="#myCarousel" data-slide-to="2"></li> --}}
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -35,7 +35,7 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
                                 <div class="img_bg">
-                                    <h3>50% DISCOUNT<br> <strong class="black_nolmal">the latest collection</strong>
+                                    <h3>GIẢM 50%<br> <strong class="black_nolmal">cho bộ siêu tập mới nhất</strong>
                                     </h3>
                                 </div>
                             </div>
@@ -50,6 +50,27 @@
                 </div>
             </div>
             <div class="carousel-item">
+                <div class="container">
+                    <div class="carousel-caption text">
+                        <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                                <div class="img_bg">
+                                    <figure><img src="{{asset('asset/images/freeship.webp')}}" /></figure>
+                                </div>
+                            </div>
+                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
+                                <div class="img_bg">
+                                    <h3>MIỄN PHÍ VẬN CHUYỂN<br> <strong class="black_nolmal">cho đơn hàng trên 1
+                                            triệu</strong>
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="carousel-item">
                 <div class="container">
                     <div class="carousel-caption text">
                         <div class="row">
@@ -68,27 +89,7 @@
 
                     </div>
                 </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="carousel-caption text">
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12">
-                                <div class="img_bg">
-                                    <h3>50% DISCOUNT<br> <strong class="black_nolmal">the latest collection</strong>
-                                    </h3>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                                <div class="img_bg">
-                                    <figure><img src="{{asset('asset/images/discount.jpg')}}" /></figure>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
@@ -150,11 +151,13 @@
         <div class="row">
             @foreach($new_products as $new_product)
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 margintop">
-                <div class="brand-box">
-                    <img src="{{asset('asset/images/products/' . $new_product->image)}}" />
-                    <h3>{{$new_product->name}}</h3>
-                    <span class="new-price">{{$new_product->price}}</span>
-                </div>
+                <a href="{{route('product.detail',[$new_product->slug])}}">
+                    <div class="brand-box">
+                        <img src="{{asset('asset/images/products/' . $new_product->image)}}" />
+                        <h3>{{$new_product->name}}</h3>
+                        <span class="new-price">{{$new_product->price}}</span>
+                    </div>
+                </a>
             </div>
             @endforeach
         </div>

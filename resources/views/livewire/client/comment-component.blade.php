@@ -5,7 +5,8 @@
         <div class="commant-text row">
             <div class="col-lg-2 col-md-2 col-sm-4">
                 <div class="profile">
-                    <img class="img-responsive" src="{{asset('asset/images/'. $comment->user->avatar)}}" alt="#">
+                    <img class="img-responsive" src="{{asset('asset/images/avatars/'. $comment->user->avatar) ?? ""}}"
+                        alt="#">
                 </div>
             </div>
             <div class="col-lg-10 col-md-10 col-sm-8">

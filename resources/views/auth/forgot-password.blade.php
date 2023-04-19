@@ -48,7 +48,7 @@
                                     placeholder="Nhập email của bạn vào đây">
                                 <x-input-error :messages="$errors->get('email')" class="m-2" />
                             </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block" style="color:black">
+                            <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Gửi mail lấy lại
                             </button>
                         </form>

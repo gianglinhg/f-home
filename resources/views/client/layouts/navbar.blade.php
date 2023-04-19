@@ -5,7 +5,7 @@
             <div class="full">
                 <div class="center-desk">
                     <div class="logo">
-                        <a href="/"><img src="{{asset('asset/images/logo.jpg')}}" alt="#"></a>
+                        <a href="/"><img src="{{asset('asset/images/logo.png')}}" alt="#"></a>
                     </div>
                 </div>
             </div>
@@ -14,7 +14,7 @@
             <div class="right_header_info">
                 <ul>
                     <li>
-                        <a href="{{route('profile.edit')}}">
+                        <a href="{{route('login')}}">
                             <img style="margin-right: 15px;" src="{{asset('asset/images/icon/1.png')}}" alt="#" />
                         </a>
                     </li>

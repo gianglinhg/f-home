@@ -5,59 +5,64 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use Cart;
+use App\Models\MailContact;
+use App\Mail\SendMailContact;
+use Mail;
 
 class MainController extends Controller
 {
-    public function home(){
+    public function home()
+    {
         $new_products = Product::latest()->limit(4)->get();
-        // dd($new_products[0]->image);
-        return view("client.home",compact('new_products'));
+        return view("client.home", compact('new_products'));
+    }
+    public function contact()
+    {
+        return view("client.contact", ['title' => "Liên hệ với chúng tôi"]);
+    }
+    public function storContact(Request $request)
+    {
+        $request->validate(
+            [
+                'name' => 'required',
+                'phone' => 'required | min: 10 | regex: "/^0/"',
+                'email' => 'required | email',
+                'message' => 'max: 1000',
+            ],
+            [
+                'name.required' => 'Tên bạn buộc phải nhập',
+                'phone.required' => 'Số điện thoại buộc phải nhập',
+                'phone.min' => 'Số điện thoại tối thiểu 10 kí tự',
+                'phone.regex' => 'Số điện thoại bắt đầu là 0',
+                'email.required' => 'Địa chỉ email buộc phải nhập',
+                'email.email' => 'Địa chỉ email không đúng định dạng',
+                'message.max' => 'Giới hạn nội dung là 1000 kí tự'
+            ]
+        );
+        $name = $request->name;
+        $email = $request->email;
+        $phone = $request->phone;
+        $message = $request->message;
+
+        $adminEmail = 'giangvanlinhbq89@gmail.com'; //Gửi thư đến ban quản trị
+        session()->put('message', $message);
+        $mail = Mail::mailer('smtp')->to($adminEmail)
+            ->send(new SendMailContact($name, $email, $phone, $message));
+        if ($mail) {
+            MailContact::create([
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone,
+                'message' => $message,
+            ]);
+        }
+        return back();
     }
 
-    public function filter(Request $request){
-        $params = $request->only(['category', 'sort','name']);
-        $params = array_filter($params, function ($value) {
-            return !is_null($value) && $value != 0;
-        });
-        $url = '/shop?' . http_build_query($params);
-        return redirect($url);
-    }
-
-    public function shop(Request $request){
-        $products = Product::query();
-            if(!empty($request->category)){
-                $category = Category::where('name',$request->category)->first();
-                $products = Product::where('category_id', $category->id);
-            }
-            if(!empty($request->sort)){
-                if($request->sort === "gia-thap-cao")
-                    $products = Product::orderBy('price','asc');
-                else if ($request->sort === "gia-cao-thap")
-                    $products = Product::orderBy('price','desc');
-                else if ($request->sort === "ten-A-Z")
-                    $products = Product::orderBy('name','asc');
-                else if ($request->sort === "ten-Z-A")
-                    $products = Product::orderBy('name','desc');
-            }
-            if(!empty($request->name)){
-                $products = Product::where('name','like','%'. $request->name .'%');
-            }
-        $products = $products->paginate(9);
-        $categories = Category::all();
-        return view("client.shop",compact('products','categories'));
-    }
-
-    public function product($slug){
-        $product = Product::where('slug',$slug)->first();
-        session()->put('product_id', $product->id);
-        return view("client.product",compact('product'));
-    }
-    public function contact(){
-        dd(session()->get('cart'));
-        return view("client.contact");
-    }
-    public function about(){
-        return view("client.about");
+    public function about()
+    {
+        return view("client.about", ['title' => 'Giới thiệu']);
     }
 
 }

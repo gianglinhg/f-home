@@ -19,10 +19,10 @@ class ProductFactory extends Factory
         $name = $this->faker->unique()->word();
         $slug = \Str::slug($name, '-');
         return [
-            'category_id' => $this->faker->randomElement([ 1, 2,3,4,5]),
+            'category_id' => $this->faker->randomElement([1, 2, 3, 4, 5]),
             'name' => $name,
             'slug' => $slug,
-            'image' => 'product-' . $this->faker->randomElement([ 1, 2,3,4,5]) . "png",
+            'image' => 'product-' . $this->faker->randomElement([1, 2, 3, 4, 5]) . ".png",
             'description' => $this->faker->paragraph(),
             'content' => $this->faker->text(),
             'price' => $this->faker->numberBetween(10000, 1000000),
